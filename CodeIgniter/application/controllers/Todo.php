@@ -10,6 +10,14 @@ class Todo extends CI_Controller {
     }
 
 
+    public function lists() {
+        $data['list'] = $this -> todo_model -> get_list();
+        
+        
+        $this->load->view('todo/list', $data); 
+
+    }
+
 
     
 }
