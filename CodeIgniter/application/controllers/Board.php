@@ -18,6 +18,16 @@ class Board extends CI_Controller {
 
 
     public function list() {
+
+        $this->load->library('pagination');
+
+
+        $config['base_url'] = '/controller/board/list/page';
+        $config['total_rows'] = $this->board_model->get_list($this->uri->segment(1), 'count');
+        
+        //total dount
+        $config['per_page'];    
+
         $data['lists'] = $this->board_model->get_list($this->uri->segment(1));
         $this->load->view('board/list', $data);
     }
